@@ -1,0 +1,268 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    font: 14px/1.5 Arial;
+    color: #333;
+    display: grid;
+    /* 整个body 2行3列   auto用内容撑开 */
+    grid: auto auto/1fr 900px 1fr;
+}
+
+@media(max-width: 900px) {
+    body {
+        display: grid;
+        /* 整个body 2行3列   auto用内容撑开 */
+        grid: auto auto/1fr 678px 1fr;
+    }
+}
+
+@media(max-width: 678px) {
+    body {
+        grid: auto auto auto/1fr;
+    }
+}
+
+header {
+    grid-area: 1/1/2/4;
+    padding: 30px 0;
+    text-align: center;
+    background-color: #444;
+}
+
+@media(max-width: 678px) {
+    header {
+        grid-area: 1/1/2/2;
+    }
+}
+
+
+/* 头像 */
+
+header>.avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+
+/* 姓名 */
+
+header>h1 {
+    margin: 10px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+
+/* 应聘岗位 */
+
+header>p {
+    margin: 0;
+    color: #999;
+}
+
+main {
+    grid-area: 2/2/3/3;
+    display: grid;
+    /* 一行两列 */
+    grid: auto/300px 600px;
+}
+
+@media(max-width: 678px) {
+    /* main是第二行 */
+    main {
+        grid-area: 2/1/3/2;
+        /* 一行一列 */
+        grid: auto/auto;
+        padding: 20px;
+    }
+}
+
+
+/* 第一列 */
+
+.column-1 {
+    grid-area: 1/1/2/2;
+}
+
+@media(max-width:678px) {
+    .column-1 {
+        grid-area: 2/1/3/2;
+    }
+}
+
+
+/* 第二列 */
+
+.column-2 {
+    grid-area: 1/2/2/3;
+    margin-left: 30px;
+}
+
+@media(max-width:678px) {
+    .column-2 {
+        grid-area: 3/1/4/2;
+        margin-left: 0;
+    }
+}
+
+
+/* section也使用grid布局*/
+
+main section {
+    margin-top: 30px;
+    display: grid;
+    /* 两行两列 */
+    grid: auto auto/50px auto;
+    /* 元素在侧轴居中 */
+    align-items: center;
+}
+
+
+/* 用户字体图标 */
+
+main section>span.iconfont {
+    grid-area: 1/1/2/2;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background: #77a8a3;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+main section>h2 {
+    grid-area: 1/2/2/3;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+
+/* 伪元素对应的样式 */
+
+main section>h2::after {
+    content: '';
+    height: 2px;
+    margin-left: 40px;
+    flex: 1;
+    background-color: #77a8a3;
+}
+
+main section>.detail {
+    grid-area: 2/2/3/3;
+    padding: 0;
+}
+
+.basic-info .detail {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.basic-info .detail li {
+    display: flex;
+    align-items: center;
+}
+
+.basic-info .detail .iconfont {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.skills .detail {
+    margin: 0;
+    padding: 0;
+}
+
+.skills .detail li {
+    margin-top: 10px;
+}
+
+.map .detail dd {
+    height: 3px;
+    background-color: #ccc;
+    margin: 8px 0 16px 0;
+    border-radius: 3px;
+}
+
+.map .detail .bar {
+    display: block;
+    height: 3px;
+    background-color: #77a8a3;
+}
+
+.layout-1 .detail>li {
+    margin-top: 10px;
+    display: grid;
+    grid: auto auto/auto 1fr auto;
+    align-items: center;
+    grid-gap: 10px;
+}
+
+@media(max-width:678px) {
+    .layout-1 .detail>li {
+        grid: auto auto auto/auto 1fr;
+    }
+}
+
+.layout-1 .detail .timeline {
+    grid-area: 1/1/2/2;
+}
+
+@media(max-width:678px) {
+    .layout-1 .detail .timeline {
+        grid-area: 1/1/2/2;
+    }
+}
+
+.layout-1 .detail li h3 {
+    grid-area: 1/2/2/3;
+    margin: 0;
+}
+
+@media(max-width:678px) {
+    .layout-1 .detail li h3 {
+        grid-area: 2/1/3/2;
+    }
+}
+
+
+/* 专业 */
+
+.layout-1 .detail li .subtitle {
+    grid-area: 1/3/2/4;
+}
+
+@media(max-width:678px) {
+    .layout-1 .detail li .subtitle {
+        grid-area: 1/2/2/3;
+        margin-left: auto;
+    }
+}
+
+
+/* 在校成绩 */
+
+.layout-1 .detail li .content {
+    grid-area: 2/2/3/4;
+    margin: 0;
+    padding: 0;
+}
+
+@media(max-width:678px) {
+    .layout-1 .detail li .content {
+        grid-area: 3/1/4/2;
+    }
+}
